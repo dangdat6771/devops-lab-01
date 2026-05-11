@@ -1,0 +1,19 @@
+# name là tên của workflow, on là sự kiện kích hoạt workflow, jobs là các công việc sẽ được thực hiện khi workflow được kích hoạt. Trong ví dụ này, workflow sẽ chạy khi có pull request hoặc push mới, và công việc test sẽ được thực hiện trên môi trường ubuntu-latest. Các bước trong công việc test bao gồm checkout code, setup Node.js, cài đặt dependencies và chạy tests.
+name: Node CI
+on:
+  pull_request:
+  push:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+      - name: Install dependencies
+        run: npm install
+      - name: Run tests
+        run: npm test

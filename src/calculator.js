@@ -1,4 +1,5 @@
 function add(a, b) {
+  console.log("Adding", a, "and", b); // thêm console.log để in ra thông tin về các số được cộng
   return a + b;
 }
 function subtract(a, b) {
